@@ -1,6 +1,4 @@
-# 🚀 [Your Project Title Here]
-
-> ⚠️ **Replace everything in `[ ]` brackets with your actual content before submission.**
+# 🚀 Drug Safety Signal Detector & Regulatory Submission Readiness Checker
 
 ---
 
@@ -8,36 +6,42 @@
 
 | Field | Value |
 |---|---|
-| **Team Name** | [Your Team Name] |
-| **Track** | [AI / DevOps / Sustainability / Open] |
-| **Team Lead** | [Name] — [email@ibm.com] |
-| **Members** | [Name 1], [Name 2], [Name 3] |
+| **Team Name** | FoursightAI |
+| **Track** | AI |
+| **Team Lead** | Priyal Patel — 26dcs098@charusat.edu.in |
+| **Members** | Khushi Shah, Honey Piludaria, Tithi Vadgama |
 
 ---
 
-## 🎯 Problem Statement
+## 🎯 Problem Statement:-
+FDA's FAERS database has 20M+ adverse event reports. Vioxx caused 27,000+ heart
+attacks before its signal was acted on. Separately, a drug approval CTD dossier spans
+100,000+ pages across 5 modules — one missing section gets it rejected, costing 6–12
+months and $50–100M. Both problems share the same root cause: too much complex
+data for manual review.
 
-> In 2–3 sentences: What problem does your project solve? Who experiences this problem?
 
-[Describe the real-world problem your project addresses. Be specific about who the user is and what pain point they face.]
+> What problem does our project solve? Who experiences this problem?
+
+Pharmaceutical companies and regulators struggle to manually detect adverse drug event signals from thousands of reports and verify regulatory submission completeness. This app automates PRR-based signal detection and ICH M4 CTD submission readiness checking.
 
 ---
 
 ## 💡 Solution
 
-> In 2–3 sentences: What did you build? How does it solve the problem above?
+> What did we build? How does it solve the problem above?
 
-[Describe your solution clearly. Explain the core mechanism — what makes it work.]
+We built a web app that automatically detects adverse drug safety signals using the PRR (Proportional Reporting Ratio) algorithm and checks ICH M4 CTD regulatory submission completeness. It groups events into clinical clusters, ranks signals by priority, and generates downloadable gap reports — all using mock pharmaceutical data.
 
 ---
 
 ## ✨ Key Features
 
-- **Feature 1:** [Brief description — e.g., "Real-time anomaly detection using watsonx.ai"]
-- **Feature 2:** [Brief description]
-- **Feature 3:** [Brief description]
-- **Feature 4:** [Optional]
-- **Feature 5:** [Optional]
+- **Feature 1:** PRR-based adverse event signal detection with 2x2 table calculation
+- **Feature 2:** Automatic event clustering into 6 clinical categories
+- **Feature 3:** ICH M4 CTD submission completeness checker with progress bars
+- **Feature 4:** Automated gap report generation with downloadable TXT export
+- **Feature 5:** Drag and drop CTD document upload with simulated analysis
 
 ---
 
@@ -45,11 +49,11 @@
 
 | Category | Technologies |
 |---|---|
-| **Languages** | [e.g., Python, TypeScript] |
-| **Frameworks** | [e.g., FastAPI, React] |
-| **IBM Technologies** | [e.g., watsonx.ai, IBM Bob, IBM Cloud] |
-| **Databases** | [e.g., PostgreSQL, Redis] |
-| **Other** | [e.g., Docker, GitHub Actions] |
+| **Languages** | HTML5, CSS3, JavaScript |
+| **Frameworks** | Vanilla JavaScript — No frameworks |
+| **IBM Technologies** | Built using IBM Bob AI Assistant |
+| **Databases** | Mock data layer — No database required |
+| **Other** | GitHub Pages for deployment |
 
 ---
 
@@ -73,22 +77,27 @@
 
 ## ⚡ How to Run
 
-> **Copy these exact steps from your [`docs/setup-guide.md`](docs/setup-guide.md)**
-
 ```bash
 # 1. Clone the repo
-git clone https://github.com/[your-repo].git
-cd [your-repo]
+git clone https://github.com/priyal1605/bob-ai-hackathon-FoursightAI.git
+cd bob-ai-hackathon-FoursightAI
+# No installation needed
+# Open index.html with VS Code Live Server
+# OR visit the live demo directly
 
-# 2. Install dependencies
-[your install command here]
+# 2. No installation needed
+# This is a pure HTML/CSS/JavaScript project
+# No dependencies, no npm, no frameworks
 
-# 3. Configure environment
-cp .env.example .env
-# Edit .env with your values
+# 3. Open in VS Code
+# Install Live Server extension in VS Code
 
 # 4. Run the project
-[your run command here]
+# Click index.html → then click "Go Live" at bottom right of VS Code
+# App opens at http://127.0.0.1:5500/index.html
+
+# OR simply visit the live demo
+# https://priyal1605.github.io/bob-ai-hackathon-FoursightAI/
 ```
 
 ---
@@ -98,7 +107,7 @@ cp .env.example .env
 | Artifact | Link |
 |---|---|
 | 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
-| 🌐 Live Demo | [See demo/live-demo-url.txt](demo/live-demo-url.txt) |
+| 🌐 Live Demo | [Click Here to View Live Demo 👉](https://priyal1605.github.io/bob-ai-hackathon-FoursightAI/) |
 | 🖼️ Screenshots | [See demo/screenshots/](demo/screenshots/) |
 | 📊 Presentation | [See presentation/slides.pdf](presentation/) |
 
@@ -106,16 +115,14 @@ cp .env.example .env
 
 ## ⚠️ Known Limitations
 
-> Be honest — judges appreciate transparency over overclaiming.
-
-- [Limitation 1: e.g., "Authentication is mocked — not production-ready"]
-- [Limitation 2: e.g., "Only tested on Chrome"]
-- [Limitation 3: e.g., "Feature X is scaffolded but not fully implemented"]
+- Uses synthetic mock data — not connected to real FDA FAERS database yet
+- Document upload analysis is simulated — no real PDF parsing
+- PRR threshold is simplified for demo purposes only
 
 ---
 
 ## 🏅 What We're Most Proud Of
 
-[Tell the judges what part of your submission is strongest and worth paying close attention to.]
+The fully working PRR signal detection algorithm with real 2x2 table calculations, automatic event clustering, and the complete ICH M4 CTD gap report generator — all running in a clean responsive UI with zero external dependencies.
 
 ---
