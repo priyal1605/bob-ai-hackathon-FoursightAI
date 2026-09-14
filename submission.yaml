@@ -71,7 +71,7 @@ other: ["GitHub Pages"]            # e.g., ["Docker", "GitHub Actions", "Slack A
 artifacts:
   source_code: "src/"
   setup_guide: "docs/setup-guide.md"
-  architecture_doc: "docs/architecture.md"
+  architecture_doc: "https://github.com/priyal1605/bob-ai-hackathon-FoursightAI/blob/main/README.md"
   demo_video: "demo/demo-video-link.txt"   # URL to hosted video (YouTube, Loom, Box)
   live_demo: "https://priyal1605.github.io/bob-ai-hackathon-FoursightAI/"      # URL to deployed demo (optional)
   screenshots: "demo/screenshots/"
