@@ -106,7 +106,7 @@ cd bob-ai-hackathon-FoursightAI
 
 | Artifact | Link |
 |---|---|
-| 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
+| 📹 Demo Video | [Watch Demo video](https://drive.google.com/file/d/1bc_2sDHQPzz_z0Ld92c83rvRHmqyU6Ze/view?usp=sharing) |
 | 🌐 Live Demo | [👉Click Here to View Live Demo ](https://priyal1605.github.io/bob-ai-hackathon-FoursightAI/) |
 | 🖼️ Screenshots | [View screenshots](demo/screenshots/) |
 | 📊 Presentation | [See presentation/slides.pdf](presentation/) |
