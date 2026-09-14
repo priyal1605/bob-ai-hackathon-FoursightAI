@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drug Safety Signal Detector &amp; Regulatory Submission Readiness Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       PROTOTYPE BANNER
+  ============================================================ -->
+  <div class="proto-banner">
+    ⚠️ PROTOTYPE / DEMO — Uses synthetic mock data only. Not for clinical or regulatory use.
+  </div>
+
+  <!-- ============================================================
+       TOP NAVIGATION
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🧬</span>
+      <span class="brand-text">SafetySignal<strong>Pro</strong></span>
+    </div>
+    <!-- Hamburger for mobile -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="nav-item active" data-section="home">Home</a></li>
+      <li><a href="#" class="nav-item" data-section="dashboard">Dashboard</a></li>
+      <li><a href="#" class="nav-item" data-section="signal">Signal Detection</a></li>
+      <li><a href="#" class="nav-item" data-section="submission">Submission Readiness</a></li>
+      <li><a href="#" class="nav-item" data-section="about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================================
+       SECTION: HOME
+  ============================================================ -->
+  <section id="home" class="page active">
+    <!-- Animated background -->
+    <div class="hero-bg" id="heroBg"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">🔬 Prototype Demo</div>
+      <h1 class="hero-title">Drug Safety Signal Detector<br>&amp; Regulatory Submission<br>Readiness Checker</h1>
+      <p class="hero-subtitle">
+        Identify potential safety signals and assess regulatory submission readiness
+        using data-driven analysis on synthetic mock data.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="navigateTo('signal')">🔍 Explore Signal Detection</button>
+        <button class="btn btn-secondary" onclick="navigateTo('submission')">📋 Check Submission Readiness</button>
+      </div>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="features-grid container">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Signal Detection</h3>
+        <p>Search mock adverse-event databases, detect potential safety signals and visualise trends over time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧮</div>
+        <h3>PRR Analysis</h3>
+        <p>Proportional Reporting Ratio (PRR) calculations flag statistical signals requiring further expert evaluation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📁</div>
+        <h3>CTD Readiness</h3>
+        <p>Check mock ICH M4 Common Technical Document dossiers, score completeness, and generate gap reports.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION: DASHBOARD
+  ============================================================ -->
+  <section id="dashboard" class="page">
+    <div class="container">
+      <div class="page-header">
+        <h2>📊 Safety Signal Dashboard</h2>
+        <p class="page-subtitle">Overview of all mock adverse-event data across monitored drugs</p>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="kpi-grid" id="kpiGrid">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Charts row -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h4>📅 Adverse Events by Year</h4>
+          <canvas id="chartYear" width="400" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>⚠️ Serious vs Non-Serious</h4>
+          <canvas id="chartSeriousness" width="400" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>🏆 Top Adverse Events</h4>
+          <canvas id="chartTopEvents" width="400" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>📈 PRR Signal Ranking</h4>
+          <canvas id="chartPRR" width="400" height="220"></canvas>
+        </div>
+        <div class="chart-card chart-card--wide">
+          <h4>🗂️ Event Cluster Distribution</h4>
+          <canvas id="chartClusters" width="800" height="220"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION: SIGNAL DETECTION
+  ============================================================ -->
+  <section id="signal" class="page">
+    <div class="container">
+      <div class="page-header">
+        <h2>🔍 Signal Detection</h2>
+        <p class="page-subtitle">Search mock adverse-event data, apply filters, and review detected safety signals</p>
+      </div>
+
+      <!-- Search + filters -->
+      <div class="search-panel card">
+        <div class="search-row">
+          <input type="text" id="drugSearchInput" class="input-field" placeholder="Search drug (e.g. DemoDrug-A)" />
+          <button class="btn btn-primary" id="searchBtn">🔍 Search</button>
+        </div>
+        <div class="filters-row">
+          <div class="filter-group">
+            <label>Year</label>
+            <select id="filterYear" class="input-field">
+              <option value="all">All Years</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Seriousness</label>
+            <select id="filterSeriousness" class="input-field">
+              <option value="all">All</option>
+              <option value="serious">Serious</option>
+              <option value="non-serious">Non-Serious</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Signal Priority</label>
+            <select id="filterPriority" class="input-field">
+              <option value="all">All Priorities</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Event Category</label>
+            <select id="filterCategory" class="input-field">
+              <option value="all">All Categories</option>
+              <option value="Cardiovascular">Cardiovascular</option>
+              <option value="Gastrointestinal">Gastrointestinal</option>
+              <option value="Neurological">Neurological</option>
+              <option value="Respiratory">Respiratory</option>
+              <option value="Skin-related">Skin-related</option>
+              <option value="Renal">Renal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signal summary cards (hidden until search) -->
+      <div id="signalSummary" class="hidden">
+        <div class="kpi-grid" id="signalKpiGrid"></div>
+
+        <!-- PRR table -->
+        <div class="card mt-2">
+          <h3>🧮 PRR Signal Analysis
+            <span class="badge badge-info">Demo Threshold: PRR ≥ 2 = Potential Signal</span>
+          </h3>
+          <div class="table-wrapper">
+            <table class="data-table" id="prrTable">
+              <thead>
+                <tr>
+                  <th>Drug</th><th>Adverse Event</th><th>a</th><th>b</th><th>c</th><th>d</th>
+                  <th>PRR</th><th>Reports</th><th>Signal Priority</th><th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="prrTableBody"></tbody>
+            </table>
+          </div>
+          <p class="prr-footnote">⚠️ A high PRR does not establish causation. Statistical signals require further expert evaluation.</p>
+        </div>
+
+        <!-- Event clusters -->
+        <div class="card mt-2">
+          <h3>🗂️ Event Clusters</h3>
+          <p class="muted">Click a cluster to expand its events.</p>
+          <div class="clusters-grid" id="clustersGrid"></div>
+        </div>
+      </div>
+
+      <!-- Default prompt -->
+      <div id="signalPrompt" class="empty-state card">
+        <div class="empty-icon">🔍</div>
+        <p>Enter a drug name above and click <strong>Search</strong> to begin signal detection.</p>
+        <p class="muted">Try: DemoDrug-A, DemoDrug-B, DemoDrug-C, DemoDrug-D</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION: SUBMISSION READINESS
+  ============================================================ -->
+  <section id="submission" class="page">
+    <div class="container">
+      <div class="page-header">
+        <h2>📋 Submission Readiness Checker</h2>
+        <p class="page-subtitle">ICH M4 Common Technical Document (CTD) completeness analysis using mock dossier data</p>
+      </div>
+
+      <div class="submission-layout">
+        <!-- Left: CTD modules -->
+        <div class="ctd-panel">
+          <div class="card">
+            <h3>📁 CTD Module Status</h3>
+            <div id="ctdModules">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Overall score -->
+          <div class="card mt-2 overall-score-card">
+            <h3>🎯 Overall Submission Readiness</h3>
+            <div class="overall-score" id="overallScore">—</div>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" id="overallProgressBar" style="width:0%"></div>
+            </div>
+            <p class="muted mt-1" id="overallReadinessLabel">Calculating…</p>
+          </div>
+        </div>
+
+        <!-- Right: Upload + Gap Report -->
+        <div class="submission-right">
+
+          <!-- Document upload -->
+          <div class="card upload-card">
+            <h3>📤 Upload CTD Document <span class="badge badge-gray">Simulated Analysis</span></h3>
+            <div class="drop-zone" id="dropZone">
+              <div class="drop-icon">📄</div>
+              <p>Drag &amp; drop a PDF or DOCX here</p>
+              <p class="muted">or</p>
+              <label class="btn btn-secondary btn-sm" for="fileInput">Browse File</label>
+              <input type="file" id="fileInput" accept=".pdf,.docx" style="display:none" />
+            </div>
+            <div id="uploadResult" class="hidden upload-result"></div>
+          </div>
+
+          <!-- Gap report -->
+          <div class="card mt-2">
+            <div class="gap-header">
+              <h3>🚨 Gap Report</h3>
+              <button class="btn btn-primary btn-sm" id="generateGapBtn">Generate Gap Report</button>
+            </div>
+            <div id="gapReport" class="hidden">
+              <div class="table-wrapper">
+                <table class="data-table" id="gapTable">
+                  <thead>
+                    <tr><th>Module</th><th>Missing Section</th><th>Status</th><th>Priority</th><th>Recommendation</th></tr>
+                  </thead>
+                  <tbody id="gapTableBody"></tbody>
+                </table>
+              </div>
+              <button class="btn btn-secondary mt-1" id="downloadReportBtn">⬇️ Download Report (TXT)</button>
+            </div>
+            <div id="gapPrompt" class="muted" style="padding:1rem 0">
+              Click "Generate Gap Report" to identify missing or incomplete sections.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION: ABOUT
+  ============================================================ -->
+  <section id="about" class="page">
+    <div class="container about-page">
+      <div class="page-header">
+        <h2>ℹ️ About This Application</h2>
+        <p class="page-subtitle">Understanding drug safety signal detection and regulatory submission readiness</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card about-card">
+          <h3>🔬 What is Drug Safety Signal Detection?</h3>
+          <p>A drug safety signal is information suggesting a possible causal relationship between a medicinal product and an adverse event that is unknown or incompletely documented. Pharmacovigilance teams monitor adverse-event reports to detect such signals early.</p>
+        </div>
+        <div class="card about-card">
+          <h3>🧮 What is PRR (Proportional Reporting Ratio)?</h3>
+          <p>PRR is a disproportionality measure used in signal detection. It compares the proportion of a specific adverse event among reports for a target drug with the proportion among all other drugs. A PRR ≥ 2 (with sufficient reports) is a common informal threshold for further review.</p>
+          <div class="formula-box">
+            PRR = [a / (a+b)] / [c / (c+d)]
+            <br/>a = target drug + target event
+            <br/>b = target drug + other events
+            <br/>c = other drugs + target event
+            <br/>d = other drugs + other events
+          </div>
+        </div>
+        <div class="card about-card">
+          <h3>⚠️ Why Do Signals Require Further Evaluation?</h3>
+          <p>Statistical signals such as a high PRR do <strong>not</strong> establish causation. Signals can arise due to reporting bias, confounding, or chance. Any detected signal must be evaluated by qualified pharmacovigilance experts before regulatory action is taken.</p>
+        </div>
+        <div class="card about-card">
+          <h3>📁 What is the CTD?</h3>
+          <p>The Common Technical Document (ICH M4) is an internationally harmonised format for new drug applications submitted to regulatory authorities such as the FDA, EMA, and PMDA.</p>
+          <ul class="module-list">
+            <li><strong>Module 1</strong> — Administrative &amp; Prescribing Information</li>
+            <li><strong>Module 2</strong> — CTD Summaries</li>
+            <li><strong>Module 3</strong> — Quality</li>
+            <li><strong>Module 4</strong> — Nonclinical Study Reports</li>
+            <li><strong>Module 5</strong> — Clinical Study Reports</li>
+          </ul>
+        </div>
+        <div class="card about-card">
+          <h3>✅ How Does Submission Readiness Checking Work?</h3>
+          <p>The checker compares the sections present in a submitted dossier against the required CTD structure. Each section is marked Complete, Needs Review, or Missing. A completeness percentage is calculated per module and overall.</p>
+        </div>
+        <div class="card about-card">
+          <h3>🧪 Mock Data in This Prototype</h3>
+          <p>All adverse-event reports, drug data, PRR values, and CTD dossier information in this application are <strong>entirely synthetic and fictional</strong>. They are designed to demonstrate the application logic. No real patient, drug, or regulatory data is used.</p>
+        </div>
+      </div>
+
+      <div class="card mt-2">
+        <h3>🚀 Future Development Roadmap</h3>
+        <div class="roadmap-grid">
+          <div class="roadmap-item"><span class="roadmap-num">1</span>FDA FAERS / AEMS real data integration</div>
+          <div class="roadmap-item"><span class="roadmap-num">2</span>Real adverse-event dataset connectors</div>
+          <div class="roadmap-item"><span class="roadmap-num">3</span>Advanced signal detection algorithms (EBGM, IC)</div>
+          <div class="roadmap-item"><span class="roadmap-num">4</span>Machine-learning event clustering (k-means, NLP)</div>
+          <div class="roadmap-item"><span class="roadmap-num">5</span>Automated PDF / CTD document parsing</div>
+          <div class="roadmap-item"><span class="roadmap-num">6</span>AI-assisted regulatory document review</div>
+          <div class="roadmap-item"><span class="roadmap-num">7</span>Advanced regulatory compliance reporting</div>
+        </div>
+      </div>
+
+      <!-- Full disclaimer -->
+      <div class="disclaimer-box mt-2">
+        <strong>⚠️ Disclaimer:</strong> This is a demonstration prototype using synthetic/mock data.
+        Statistical safety signals do not establish causation and require further expert evaluation.
+        This application is not an official FDA system and is not intended for clinical or regulatory decision-making.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CLUSTER DETAIL MODAL
+  ============================================================ -->
+  <div class="modal-overlay hidden" id="clusterModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalTitle">Cluster Detail</h3>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <p>SafetySignalPro — Prototype Demo &nbsp;|&nbsp; Synthetic data only &nbsp;|&nbsp; Not for clinical use</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
