@@ -72,7 +72,7 @@ artifacts:
   source_code: "src/"
   setup_guide: "docs/setup-guide.md"
   architecture_doc: "https://github.com/priyal1605/bob-ai-hackathon-FoursightAI/blob/main/README.md"
-  demo_video: "demo/demo-video-link.txt"   # URL to hosted video (YouTube, Loom, Box)
+  demo_video: "https://drive.google.com/file/d/1bc_2sDHQPzz_z0Ld92c83rvRHmqyU6Ze/view?usp=sharing"   # URL to hosted video (YouTube, Loom, Box)
   live_demo: "https://priyal1605.github.io/bob-ai-hackathon-FoursightAI/"      # URL to deployed demo (optional)
   screenshots: "demo/screenshots/"
   presentation: "presentation/"
