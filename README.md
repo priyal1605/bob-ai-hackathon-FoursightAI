@@ -110,7 +110,7 @@ cd bob-ai-hackathon-FoursightAI
 | 🌐 Live Demo | [👉Click Here to View Live Demo ](https://priyal1605.github.io/bob-ai-hackathon-FoursightAI/) |
 | 🖼️ Screenshots | [View screenshots](demo/screenshots/) |
 | 📊 Presentation | [View Presentation](presentation/) |
-| 📄 Documentation| [View Documentation]()
+| 📄 Documentation| [View Documentation](docs/)|
 ---
 
 ## ⚠️ Known Limitations
